@@ -7,14 +7,16 @@ const AppProject1 = () => {
 
   const addUserHandler = (userName, userAge) => {
     setUsersList((prevUsersList) => {
-      return [...prevUsersList, 
-        {name: userName, age: userAge, id: Math.random().toString()}];
-    })
-  }
+      return [...prevUsersList,
+      { name: userName, age: userAge, id: Math.random().toString() },
+      ];
+    });
+  };
+
   return (
     <div>
-      <AddUser onAddUser={addUserHandler}/>
-      <UsersList users={usersList}/>
+      <AddUser onAddUser={addUserHandler} />
+      <UsersList users={usersList} />
     </div>
   )
 }
