@@ -30,8 +30,10 @@ const AppSection10 = () => {
   };
 
   return (
-    <AuthContext.Provider>
-      <MainHeader isAuthenticated={isLoggedIn} onLogout={logoutHandler} />
+    <AuthContext.Provider value={{
+      isLoggedIn: isLoggedIn,
+    }}>
+      <MainHeader onLogout={logoutHandler} />
       <main>
         {!isLoggedIn && <Login onLogin={loginHandler} />}
         {isLoggedIn && <Home onLogout={logoutHandler} />}
