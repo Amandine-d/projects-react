@@ -1,3 +1,4 @@
+import Modal from '../UI/Modal';
 import classes from './Cart.module.css';
 
 const Cart = (props) => {
@@ -7,13 +8,13 @@ const Cart = (props) => {
     amount: 2,
     price: 12
   }].map((item) => {
-    <li>
+    return (<li>
       {item.name}
-    </li>
+    </li>)
   })}</ul>;
 
   return (
-    <div>
+    <Modal>
       {cartItems}
       <div className={classes.total}>
         <span>Total amount</span>
@@ -27,7 +28,7 @@ const Cart = (props) => {
           Order
         </button>
       </div>
-    </div>
+    </Modal>
   );
 };
 
