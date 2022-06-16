@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import DemoOutput from "./components/Demo/DemoOutput";
 import Button from './components/UI/Button/Button';
 
 const HowToApp = () => {
@@ -11,7 +12,8 @@ const HowToApp = () => {
   return (
     <div>
       <h1>Hi!</h1>
-      {showParagraph && <p>This is new</p>}
+      <DemoOutput show={showParagraph} />
+      {/* {showParagraph && <p>This is new</p>} */}
       <Button onClick={toggleParagraph}>Toggle Paragraph</Button>
     </div>
   );
