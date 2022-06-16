@@ -1,5 +1,6 @@
 import React, { useCallback, useEffect, useState } from 'react';
 
+import AddMovie from './components/AddMovie';
 import MoviesList from './components/MoviesList';
 import './ConnectDatabaseApp.css';
 
@@ -12,7 +13,8 @@ function ConnectDatabaseApp() {
     setIsLoading(true);
     setError(null);
     try {
-      const response = await fetch('https://swapi.dev/api/films/');
+      const response = await fetch('https://react-http-c4132-default-rtdb.europe-west1.firebasedatabase.app/movies.json');
+      
       //No need to do this when using axios
       if (!response.ok) {
         throw new Error('Something went wrong!');
@@ -29,7 +31,6 @@ function ConnectDatabaseApp() {
         };
       })
       setMovies(transformedMovies);
-      setIsLoading(false);
     } catch (error) {
       setError(error.message);
     };
@@ -40,6 +41,10 @@ function ConnectDatabaseApp() {
     fetchMoviesHandler();
   }, [fetchMoviesHandler]);
   //if [] the data is fetched immediately because of useEffect, we don't have to press the button
+
+  function addMovieHandler(movie) {
+    console.log(movie);
+  }
 
   let content = <p>Found no movies.</p>
   if (movies.length > 0) {
@@ -56,6 +61,9 @@ function ConnectDatabaseApp() {
 
   return (
     <React.Fragment>
+      <section>
+        <AddMovie onAddMovie={addMovieHandler} />
+      </section>
       <section>
         <button onClick={fetchMoviesHandler}>Fetch Movies</button>
       </section>
