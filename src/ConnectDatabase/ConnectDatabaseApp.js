@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 
 import MoviesList from './components/MoviesList';
 import './ConnectDatabaseApp.css';
@@ -8,7 +8,7 @@ function ConnectDatabaseApp() {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  async function fetchMoviesHandler() {
+  const fetchMoviesHandler = useCallback(async () => {
     setIsLoading(true);
     setError(null);
     try {
@@ -34,7 +34,12 @@ function ConnectDatabaseApp() {
       setError(error.message);
     };
     setIsLoading(false);
-  };
+  }, []);
+
+  useEffect(() => {
+    fetchMoviesHandler();
+  }, [fetchMoviesHandler]);
+  //if [] the data is fetched immediately because of useEffect, we don't have to press the button
 
   let content = <p>Found no movies.</p>
   if (movies.length > 0) {
@@ -46,6 +51,8 @@ function ConnectDatabaseApp() {
   if (isLoading) {
     content = <p>Loading...</p>
   };
+
+
 
   return (
     <React.Fragment>
