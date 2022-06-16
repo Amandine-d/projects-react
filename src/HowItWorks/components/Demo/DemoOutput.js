@@ -11,4 +11,8 @@ const DemoOutput = (props) => {
 //memo tells react that react should look at the props the compoenent gets et only if the value changes, the component will execute
 //Avoids unnecessary rendering
 
+//If we use show={false} in App.js, we use a boolean
+//compares props.show === props.previous.show
+//works for primitive value
+
 export default React.memo(DemoOutput);

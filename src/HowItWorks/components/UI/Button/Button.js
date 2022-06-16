@@ -15,4 +15,7 @@ const Button = (props) => {
   );
 };
 
-export default Button;
+export default React.memo(Button);
+
+//compares props.onClick === props.previous.onClick
+//not the same as it is a function
