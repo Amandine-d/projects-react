@@ -6,7 +6,9 @@
 // import AppSection10 from './Section-10/AppSection10';
 // import { AuthContextProvider } from './Section-10/store/auth-context';
 
-import CustomHooksApp from "./CustomHooks/CustomHooksApp";
+import CustomHooksExampleApp from "./CustomHooksExample/CustomHooksExampleApp";
+
+// import CustomHooksApp from "./CustomHooks/CustomHooksApp";
 
 // import ConnectDatabaseApp from "./ConnectDatabase/ConnectDatabaseApp";
 
@@ -24,7 +26,8 @@ function App() {
       {/* <FoodOrderApp /> */}
       {/* <HowToApp /> */}
       {/* <ConnectDatabaseApp /> */}
-      <CustomHooksApp />
+      {/* <CustomHooksApp /> */}
+      <CustomHooksExampleApp />
     </div>
   );
 }
