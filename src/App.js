@@ -6,7 +6,9 @@
 // import AppSection10 from './Section-10/AppSection10';
 // import { AuthContextProvider } from './Section-10/store/auth-context';
 
-import HowToApp from "./HowItWorks/HowToApp";
+import ConnectDatabaseApp from "./ConnectDatabase/ConnectDatabaseApp";
+
+// import HowToApp from "./HowItWorks/HowToApp";
 
 function App() {
   return (
@@ -18,7 +20,8 @@ function App() {
         <AppSection10 />
       </AuthContextProvider> */}
       {/* <FoodOrderApp /> */}
-      <HowToApp />
+      {/* <HowToApp /> */}
+      <ConnectDatabaseApp />
     </div>
   );
 }
