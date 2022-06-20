@@ -8,22 +8,21 @@ import useHttp from './hooks/use-http';
 function CustomHooksExampleApp() {
   const [tasks, setTasks] = useState([]);
 
-  const transformTasks = useCallback((tasksObj) => {
-    const loadedTasks = [];
-    for (const taskKey in tasksObj) {
-      loadedTasks.push({
-        id: taskKey,
-        text: tasksObj[taskKey].text
-      })
-    }
-    setTasks(loadedTasks);
-  }, []);
-  //We don't have anything in the array because we don't use anything external expect setTasks and it will not change
-
-  const { isLoading, error, sendRequest: fetchTasks } = useHttp(transformTasks);
+  const { isLoading, error, sendRequest: fetchTasks } = useHttp();
 
   useEffect(() => {
-    fetchTasks({ url: 'https://react-http-c4132-default-rtdb.europe-west1.firebasedatabase.app/tasks.json' });
+    const transformTasks = (tasksObj) => {
+      const loadedTasks = [];
+      for (const taskKey in tasksObj) {
+        loadedTasks.push({
+          id: taskKey,
+          text: tasksObj[taskKey].text
+        })
+      }
+      setTasks(loadedTasks);
+    };
+
+    fetchTasks({ url: 'https://react-http-c4132-default-rtdb.europe-west1.firebasedatabase.app/tasks.json' }, transformTasks);
   }, [fetchTasks]);
 
   const taskAddHandler = (task) => {

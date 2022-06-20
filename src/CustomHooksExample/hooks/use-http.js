@@ -1,10 +1,10 @@
 import { useCallback, useState } from "react";
 
-const useHttp = (applyData) => {
+const useHttp = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  const sendRequest = useCallback(async (requestConfig) => {
+  const sendRequest = useCallback(async (requestConfig, applyData) => {
     setIsLoading(true);
     setError(null);
     try {
@@ -25,7 +25,7 @@ const useHttp = (applyData) => {
       setError(err.message || 'Something went wrong!');
     }
     setIsLoading(false);
-  }, [applyData]);
+  }, []);
   //We should have requestConfig and applyData in the array, but bot of them are objects.
   //So in the app comp we have to make sure they are not rendered all the time when using the function App
   //We have to wrap transformTasks with useCallback to make sure of that
