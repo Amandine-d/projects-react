@@ -6,13 +6,15 @@
 // import AppSection10 from './Section-10/AppSection10';
 // import { AuthContextProvider } from './Section-10/store/auth-context';
 
-import CustomHooksExampleApp from "./CustomHooksExample/CustomHooksExampleApp";
+// import CustomHooksExampleApp from "./CustomHooksExample/CustomHooksExampleApp";
 
 // import CustomHooksApp from "./CustomHooks/CustomHooksApp";
 
 // import ConnectDatabaseApp from "./ConnectDatabase/ConnectDatabaseApp";
 
 // import HowToApp from "./HowItWorks/HowToApp";
+
+import FormApp from './FormApp/FormApp';
 
 function App() {
   return (
@@ -27,7 +29,8 @@ function App() {
       {/* <HowToApp /> */}
       {/* <ConnectDatabaseApp /> */}
       {/* <CustomHooksApp /> */}
-      <CustomHooksExampleApp />
+      {/* <CustomHooksExampleApp /> */}
+      <FormApp />
     </div>
   );
 }
