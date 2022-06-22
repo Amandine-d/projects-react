@@ -5,6 +5,8 @@ import MealItem from './MealItem/MealItem';
 
 const AvailableMeals = () => {
   const [meals, setMeals] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+
   useEffect(() => {
     const fetchMeals = async () => {
       const response = await fetch('https://react-http-c4132-default-rtdb.europe-west1.firebasedatabase.app/meals.json');
@@ -21,9 +23,18 @@ const AvailableMeals = () => {
         });
       }
       setMeals(loadedMeals);
+      setIsLoading(false);
     };
     fetchMeals();
   }, []);
+
+  if (isLoading) {
+    return (
+      <section className={classes.MealsLoading}>
+        <p>...Loading</p>
+      </section>
+    );
+  };
 
   const mealsList = meals.map((meal) => <MealItem
     id={meal.id}
