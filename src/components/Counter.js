@@ -7,7 +7,7 @@ import classes from './Counter.module.css';
 const Counter = () => {
   const dispatch = useDispatch();
 
-  const counter = useSelector(state => state.counter);
+  const counter = useSelector(state => state.counter.counter);
   //Hook used to get the data out of the store
 
   const show = useSelector(state => state.showCounter);
