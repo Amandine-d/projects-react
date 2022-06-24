@@ -23,9 +23,9 @@ const counterSlice = createSlice({
     toggleCounter(state) {
       state.showCounter = !state.showCounter;
     },
-
-  }
+  },
 });
+
 
 // const counterReducer = (state = initialState, action) => {
 //   if (action.type === 'increment') {
