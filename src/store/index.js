@@ -17,9 +17,11 @@ const counterSlice = createSlice({
       state.counter--;
     },
     increase(state, action) {
-      state.counter = state.counter + action.amount;
+      // state.counter = state.counter + action.amount;
+      state.counter = state.counter + action.payload;
+      //payload is the name of the property we will need to access any action we need
     },
-    toggle(state) {
+    toggleCounter(state) {
       state.showCounter = !state.showCounter;
     },
 
@@ -66,5 +68,10 @@ const store = configureStore({
   reducer: counterSlice.reducer
   //the value can be a single reducer or multiple state slices
 });
+
+export const counterActions = counterSlice.actions;
+//returns an action object of this shape:
+//{type: 'some auto-generated unique identifier'}
+//action creators
 
 export default store;

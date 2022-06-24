@@ -1,5 +1,7 @@
 import { useSelector, useDispatch } from 'react-redux'
 
+import { counterActions } from '../store';
+
 import classes from './Counter.module.css';
 
 const Counter = () => {
@@ -11,28 +13,32 @@ const Counter = () => {
   const show = useSelector(state => state.showCounter);
 
   const incrementHandler = () => {
-    dispatch({
-      type: 'increment'
-    });
+    // dispatch({
+    //   type: 'increment'
+    // });
+    dispatch(counterActions.increment());
+    //full action object automatically created for us
   };
 
   const increaseHandler = () => {
-    dispatch({
-      type: 'increase',
-      amount: 5
-    });
+    // dispatch({
+    //   type: 'increase',
+    //   amount: 5
+    // });
+    dispatch(counterActions.increase(5));
+    //will create { type: SOME_UNIQUE_IDENTIFIER, payload: 5}
+    //that's why we have to use action.payload in the store and not action.amount
   };
 
   const decrementHandler = () => {
-    dispatch({
-      type: 'decrement'
-    });
+    // dispatch({
+    //   type: 'decrement'
+    // });
+    dispatch(counterActions.decrement());
   };
 
   const toggleCounterHandler = () => {
-    dispatch({
-      type: 'toggle'
-    })
+    dispatch(counterActions.toggleCounter)
   };
 
   return (
