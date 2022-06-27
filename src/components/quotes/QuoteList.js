@@ -33,6 +33,7 @@ const QuoteList = (props) => {
     });
     // history.push(`${location.pathname}?sort=${(isSortingAscending ? 'desc' : 'asc')}`);
   };
+  console.log(sortedQuotes);
 
   return (
     <Fragment>
