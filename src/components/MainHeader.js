@@ -3,6 +3,9 @@ import { NavLink } from 'react-router-dom';
 import classes from './MainHeader.module.css';
 
 const MainHeader = () => {
+  //Forthe className:
+  //With NavLinktakes a function that give information about the link
+  //className={(navData) => {navData.isActive ? ' ' : ''}}
   return (
     <header className={classes.header}>
       <nav>
