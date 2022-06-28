@@ -1,9 +1,10 @@
-import { useContext } from 'react';
-import { useRef } from 'react';
+import { useContext, useRef } from 'react';
+import { useHistory } from 'react-router-dom';
 import AuthContext from '../../store/auth-context';
 import classes from './ProfileForm.module.css';
 
 const ProfileForm = () => {
+  const history = useHistory();
   const url = 'https://identitytoolkit.googleapis.com/v1/accounts:update?key=AIzaSyAhYZr-MYC6MAV4foGuvQBWCE5Eob4OxIA';
 
   const newPasswordInputRef = useRef();
@@ -28,7 +29,7 @@ const ProfileForm = () => {
     })
     .then((res) => {
       //Assume success
-      
+      history.replace('/');
     });
   }
 
