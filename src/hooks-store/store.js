@@ -10,8 +10,8 @@ export const useStore = () => {
   const setState = useState(globalState)[1];
   //Only interested in the second value
 
-  const dispatch = actionIdentifier => {
-    const newState = actions[actionIdentifier](globalState);
+  const dispatch = (actionIdentifier, payload) => {
+    const newState = actions[actionIdentifier](globalState, payload);
     globalState = { ...globalState, ...newState };
 
     for (const listener of listeners) {
