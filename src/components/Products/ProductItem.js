@@ -7,10 +7,12 @@ import { toggleFav } from '../../store/actions/products';
 import { ProductsContext } from '../../context/products-context';
 import { useStore } from '../../hooks-store/store';
 
-const ProductItem = props => {
+const ProductItem = (props) => {
+  console.log('RENDERING');
   // const toggleFav = useContext(ProductsContext).toggleFav;
-  const dispatch = useStore()[1];
+  const dispatch = useStore(false)[1];
   //Only interested in the second argument here
+  //false for shouldListen, the component will not render several times
 
   const toggleFavHandler = () => {
     // dispatch(toggleFav(props.id));

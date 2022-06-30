@@ -6,7 +6,8 @@ let listeners = [];
 
 let actions = {};
 
-export const useStore = () => {
+export const useStore = (shouldListen = true) => {
+  //shoudlListen to avoid component to render 4 times unnecessarily
   const setState = useState(globalState)[1];
   //Only interested in the second value
 
@@ -20,11 +21,15 @@ export const useStore = () => {
   };
 
   useEffect(() => {
-    listeners.push(setState);
-    return () => {
-      listeners = listeners.filter(li => li !== setState);
+    if (shouldListen) {
+      listeners.push(setState);
     }
-  }, [setState]);
+    return () => {
+      if (shouldListen) {
+        listeners = listeners.filter(li => li !== setState);
+      }
+    }
+  }, [setState, shouldListen]);
 
   return (
     [globalState, dispatch]
